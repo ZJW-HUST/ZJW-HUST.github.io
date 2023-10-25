@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="zhaojianwei" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>个人主页</title>
+        <style type="text/css">
+        @-webkit-keyframes 'complex' {
+		/* 定义动画开始处的关键帧 */
+		0% {
+			-webkit-transform: rotate(0deg) scale(1);
+			background-color: #f00;
+		}
+		/* 定义动画进行40%时的关键帧 */
+		40% {
+			-webkit-transform:rotate(700deg) scale(0.5);
+			background-color: #ff0;
+		}
+		/* 定义动画进行80%时的关键帧 */
+		80% {
+			-webkit-transform:rotate(980deg) scale(2.7);
+			background-color: #f0f;
+		}
+		/* 定义动画进行100%时的关键帧 */
+		100% {
+			-webkit-transform:rotate(0deg) scale(1);
+			background-color: #00f;
+		}
+	    }
+        div#eee:hover {
+		/* 指定执行fkjava动画 */
+		-webkit-animation-name: 'complex';
+		/* 指定动画的执行时间 */
+		-webkit-animation-duration: 6s;
+		/* 指定动画的循环次数为1 */
+		-webkit-animation-iteration-count: 1;
+	    }
+        body{
+            background-image: url(bg2.png);
+            background-attachment: fixed;
+
+        }
+        #aaa{
+            font-size: 200%;
+            text-shadow:5px 5px 2px;
+            color:white;
+            text-align: center;
+            padding-top: 0%;
+        }
+        li{
+            font-size: 140%;
+            line-height: 250%;
+        }
+        #ccc{
+            position: absolute;
+            left: 450px;
+            top: 50px;
+            width:700px; 
+            height: 600px; 
+            background-color: yellow; 
+            border-width:8px;
+            border-style:solid; 
+            border-color:rgb(71, 255, 141) rgb(28, 28, 31) rgb(233, 6, 184) rgb(48, 14, 241);
+
+        }
+        #eee{
+            background-color: rgb(20, 214, 124);
+	    	border: 1px solid black;
+		    position: absolute;
+		    top: 190px;
+            right: 138px;
+		    width: 100px;
+		    height:100px;
+            text-align: center;
+            line-height: 92px;
+        }
+        table,input{
+            font-size: 150%;
+            margin: 0px auto;
+
+        }
+        td,tr{
+            border:2px solid black;
+        }
+        tr:hover{
+            color:rgb(48, 14, 241);
+        }
+        li:hover{
+            color:rgb(48, 14, 241);
+        }
+        </style>
+
+    </head>
+    <body>
+        <div style="width: 350px;height: 600px;position:absolute; top:50px;">
+            <div id="aaa" style="width: 320px;height: 200px; border-radius:20px; background-color: black;">
+                <p>赵建伟</p>
+                <img src="ph.jpg" style="border-radius: 100%;" width="100px" height="=100px;" >
+            </div>
+            </br>
+            </br>
+            <div id="bbb" style="width: 320px; height: 300px; border-radius:16px 40px; background-color: burlywood;">
+                <ul>
+                   <li>学号：U201915476</li>
+                   <li>班级：自动化校交1901班</li>
+                   <li>出生年月：2001.08</li>
+                   <li>爱好：养猫遛狗</li>
+                   <li>特长：特长</li>
+               </ul>
+            </div>
+
+        </div>
+        <div id="ccc">
+            <table id="ddd" style="border: 3px solid black;">
+                <caption><b>成绩单</b></caption>
+                <tr>
+                    <td>课程</td>
+                    <td>学分</td>
+                    <td>成绩</td>
+                </tr>
+                <tr>
+                    <td>中国语文</td>
+                    <td>2</td>
+                    <td>79</td>
+                </tr>
+                <tr>
+                    <td>微积分(一)上</td>
+                    <td>5.5</td>
+                    <td>97</td>
+                </tr>
+                <tr>
+                    <td>网球(一)</td>
+                    <td>1</td>
+                    <td>84</td>
+                </tr>
+                <tr>
+                    <td>线性代数</td>
+                    <td>2.5</td>
+                    <td>91</td>
+                </tr>
+                <tr>
+                    <td>计算机程序设计基础(C++)</td>
+                    <td>3</td>
+                    <td>94</td>
+                </tr>
+                <tr>
+                    <td>军事训练</td>
+                    <td>1</td>
+                    <td>90</td>
+                </tr>
+            </table>
+            <p id="score" style="color:rgba(238, 10, 238, 0.89); font-size: 120%; text-align: center;"></p>
+            <div>
+            课程:<input type="text" id="111" size="18">
+            学分:<input type="text" id="222" size="3">
+            成绩:<input type="text" id="333" size="3">
+            <input id="chg" type="button" value="添加" onclick="change();" />
+            </br>
+            删除第<input id="chg3" type="text" size="3">行成绩
+            <input id="chg2" type="button" value="确认" onclick="change2();" />
+            </div>
+        </div>
+        <div id="eee">
+            <a href="https://www.hust.edu.cn/">华中科技大学</a>
+        </div>
+        <script type="text/javascript">
+        var jisuan=function(){
+            var score=document.getElementById("ddd");
+            var hangshu=score.rows.length;
+            var i,sum1=0.0,sum2=0.0;
+            var cj
+            var temp;
+            for(i=1;i<hangshu;i++)
+            {
+                temp= parseFloat(score.rows.item(i).cells.item(1).innerHTML);  
+                sum1=sum1+temp;
+                sum2=sum2+parseFloat(score.rows.item(i).cells.item(2).innerHTML)*temp;
+
+            }
+            cj=sum2/sum1;          
+            document.getElementById("score").innerHTML="总加权成绩："+cj.toFixed(2);
+        }
+        var change=function(){
+            var tb=document.getElementById("ddd");
+            var ln=tb.rows.length;
+            var tr=tb.insertRow(ln);
+            /*for(var j=0;j<3;j++)
+            {
+                var td=tr.insertCell(j);
+                td.innerHTML =document.getElementById(j.toString).value;
+            }*/
+            var td1=tr.insertCell(0);
+            td1.innerHTML =document.getElementById("111").value;
+            var td2=tr.insertCell(1);
+            td2.innerHTML =document.getElementById("222").value;
+            var td3=tr.insertCell(2);
+            td3.innerHTML =document.getElementById("333").value;
+            jisuan();
+        }
+        var change2=function(){
+            var tb=document.getElementById("ddd");
+            var info=document.getElementById("chg3").value;
+            if(isNaN(info)){
+                alert("输入错误");
+                return;
+            }
+            tb.deleteRow(parseInt(info));
+            jisuan();
+        }
+        jisuan();
+        </script>
+        
+    </body>
+</html>
